@@ -22,6 +22,7 @@ window.Vue = require('vue');
 
 
 import AdminNav from "./components/AdminNav";
+import ClientIndex from './components/Clients/Index'
 
 
 /**
@@ -33,6 +34,7 @@ import AdminNav from "./components/AdminNav";
 const app = new Vue({
     el: '#app',
     components:{
-        AdminNav
+        AdminNav,
+        ClientIndex
     }
 });
