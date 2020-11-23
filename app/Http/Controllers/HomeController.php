@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
-use App\transaction;
+use App\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
