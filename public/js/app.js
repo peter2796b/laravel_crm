@@ -2373,7 +2373,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 this.isLoading = true;
                 _context.next = 3;
-                return axios.get("/api/clients?name=".concat(query));
+                return axios.get("/api/clients?query=".concat(query));
 
               case 3:
                 res = _context.sent;
@@ -54686,7 +54686,6 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-console.log("peter_test_token");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['Authorization'] = "Bearer ".concat("peter_test_token");
 /**

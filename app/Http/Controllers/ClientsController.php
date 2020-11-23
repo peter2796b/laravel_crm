@@ -54,6 +54,7 @@ class ClientsController extends Controller
         $client->avatar = $fileData['name'];
         $client->avatar_path = $fileData['path'];
         $client->save();
+
         return redirect()->route('clients.index');
     }
 
@@ -65,7 +66,7 @@ class ClientsController extends Controller
      */
     public function show($id)
     {
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         return view('clients.show', compact('client'));
     }
 
@@ -77,7 +78,7 @@ class ClientsController extends Controller
      */
     public function edit($id)
     {
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         return view('clients.edit', compact('client'));
     }
 
@@ -96,7 +97,7 @@ class ClientsController extends Controller
             'last_name' => 'required|string|max:50',
         ]);
 
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         $client->update($validated);
         if (request()->hasFile('avatar')) {
             //validate the image if the image is changed
@@ -119,7 +120,7 @@ class ClientsController extends Controller
      */
     public function destroy($id)
     {
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         $client->delete();
         Storage::delete($client->avatar_path); //delete the avatar once the client is deleted
     }

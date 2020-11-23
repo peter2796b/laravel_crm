@@ -12,7 +12,7 @@ class ClientSeeder extends Seeder
     public function run()
     {
         factory(\App\Client::class, 15)->create()->each(function ($client) {
-            $client->transactions()->saveMany(factory(App\transaction::class, 5)->make());
+            $client->transactions()->saveMany(factory(App\Transaction::class, 5)->make());
         });;
     }
 }

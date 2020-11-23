@@ -22,6 +22,10 @@ class ClientRequest extends FormRequest
         ];
     }
 
+    /**
+     * custom validation message
+     * @return array|string[]
+     */
     public function messages()
     {
         return [

@@ -3,6 +3,13 @@
 
 A CRM, for managing clients and transactions made by clients
 
+###Demo
+http://ec2-13-233-154-28.ap-south-1.compute.amazonaws.com/
+
+`email:admin@admin.com`
+`password:password`
+
+
 ###Setup project
 1. `git clone https://github.com/peter2796b/laravel_crm.git`
 2. `cd laravel_crm`

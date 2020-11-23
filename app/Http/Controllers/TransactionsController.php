@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TransactionRequest;
-use App\transaction;
-use Illuminate\Http\Request;
+use App\Transaction;
 
 class TransactionsController extends Controller
 {
@@ -21,7 +20,7 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        $transactions = transaction::latest()->with('client')->paginate(10);
+        $transactions = Transaction::latest()->with('client')->paginate(10);
         $transactions = \App\Http\Resources\Transaction::collection($transactions);
 
         return view('transactions.index', compact('transactions'));
@@ -69,7 +68,7 @@ class TransactionsController extends Controller
      */
     public function edit($id)
     {
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::findOrFail($id);
         return view('transactions.edit', compact('transaction'));
     }
 
@@ -83,7 +82,7 @@ class TransactionsController extends Controller
     public function update(TransactionRequest $request, $id)
     {
         $validated = $request->validated();
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::findOrFail($id);
         $transaction->update($validated);
     }
 
@@ -95,7 +94,7 @@ class TransactionsController extends Controller
      */
     public function destroy($id)
     {
-        $transaction = transaction::find($id);
+        $transaction = Transaction::findOrFail($id);
         $transaction->delete();
     }
 }

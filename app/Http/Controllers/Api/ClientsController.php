@@ -16,7 +16,7 @@ class ClientsController extends Controller
     }
 
     /**
-     * Display a listing of the client resource.
+     * Display a listing of the client resource. api search for clients
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
@@ -24,9 +24,9 @@ class ClientsController extends Controller
     {
         $query = request()->get('query');
 
-        $clients = Client::where('first_name', 'like', '%' . $query . '%')
-            ->orWhere('last_name', 'like', '%' . $query . '%')
-            ->orWhere('email', 'like', '%' . $query . '%')
+        $clients = Client::where('first_name', 'like', "%{$query}%")
+            ->orWhere('last_name', 'like', "%{$query}%")
+            ->orWhere('email', 'like', "%{$query}%")
             ->get();
 
         return \App\Http\Resources\Client::collection($clients);

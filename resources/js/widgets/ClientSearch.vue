@@ -42,7 +42,7 @@ export default {
     methods: {
         searchClients: _.debounce(async function (query) {
             this.isLoading = true
-            let res = await axios.get(`/api/clients?name=${query}`)
+            let res = await axios.get(`/api/clients?query=${query}`)
             this.clients = res.data.data;
             this.isLoading = false;
         }, 500)

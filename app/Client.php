@@ -17,11 +17,16 @@ class Client extends Model
      */
     public function transactions()
     {
-        return $this->hasMany(transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 
     /*
      * Accessors
+     */
+
+    /**
+     * full name of the client
+     * @return string
      */
     public function getFullNameAttribute()
     {

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class transaction extends Model
+class Transaction extends Model
 {
     protected $guarded = ['id'];
 
@@ -12,6 +12,8 @@ class transaction extends Model
     {
         parent::boot();
 
+        //its best practice to store properties such as amount in its lowest possible denomination
+        //convert pounds to pence and store the amount in pence
         self::creating(function ($transaction) {
             $transaction->amount *= 100;
         });
@@ -34,6 +36,11 @@ class transaction extends Model
 
     /*
      * Accessors
+     */
+
+    /**
+     * return amount to be displayed
+     * @return string
      */
     public function getDisplayAmountAttribute()
     {
