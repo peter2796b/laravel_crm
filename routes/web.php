@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/clients', 'ClientsController');
-Route::resource('/transactions', 'HomeController');
+Route::resource('/transactions', 'TransactionsController');

@@ -61,11 +61,12 @@ class ClientsController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+        return view('clients.show', compact('client'));
     }
 
     /**
@@ -130,7 +131,7 @@ class ClientsController extends Controller
     {
         $extension = $request->file('avatar')->getClientOriginalExtension();
         $fileNameToStore = $cliendId . '.' . $extension;
-        $path = $request->file('avatar')->storeAs('public/clients/avatars', $fileNameToStore);
+        $path = $request->file('avatar')->storeAs('clients/avatars', $fileNameToStore);
         return [
             'name' => $fileNameToStore,
             'path' => $path

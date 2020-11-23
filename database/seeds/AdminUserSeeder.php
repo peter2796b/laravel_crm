@@ -15,8 +15,9 @@ class AdminUserSeeder extends Seeder
 
         $admin->name = 'Peter Braganza';
         $admin->email = 'admin@admin.com';
+        $admin->api_token = 'peter_test_token';
         $admin->password = bcrypt('password'); //encrypt the password
-        
+
         $admin->save();
     }
 }

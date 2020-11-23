@@ -23,6 +23,10 @@ window.Vue = require('vue');
 
 import AdminNav from "./components/AdminNav";
 import ClientIndex from './components/Clients/Index'
+import TransactionIndex from './components/Transactions/Index'
+import TransactionForm from './components/Transactions/TransactionForm'
+import money from 'v-money'
+Vue.use(money)
 
 
 /**
@@ -35,6 +39,9 @@ const app = new Vue({
     el: '#app',
     components:{
         AdminNav,
-        ClientIndex
+        ClientIndex,
+        TransactionIndex,
+        TransactionForm
+
     }
 });
