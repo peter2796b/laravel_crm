@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
+use App\transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $clients = Client::all();
+        $transactions = Transaction::all();
+        $stats = [
+            'clients' => $clients->count(),
+            'transactions' => $transactions->count()
+        ];
+        return view('home', compact('stats'));
     }
 }

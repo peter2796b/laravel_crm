@@ -13,6 +13,14 @@ class Client extends Model
 
 
     /*
+     * Associations
+     */
+    public function transactions()
+    {
+        return $this->hasMany(transaction::class);
+    }
+
+    /*
      * Accessors
      */
     public function getFullNameAttribute()

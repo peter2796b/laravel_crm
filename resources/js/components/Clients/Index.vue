@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table class="table" v-if="Clients.data.length">
+        <table class="table" v-if="clients.data.length">
             <thead>
             <tr>
                 <th scope="col"></th>
@@ -11,7 +11,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(client,index) in Clients.data">
+            <tr v-for="(client,index) in clients.data">
                 <td>
                     <img :src="`/storage/clients/avatars/${client.avatar}`" class="avatar"/>
                 </td>
@@ -19,6 +19,7 @@
                 <td>{{ client.last_name }}</td>
                 <td>{{ client.email }}</td>
                 <td class="text-right">
+                    <a :href="`/clients/${client.id}`" class="btn btn-primary btn-sm">Transactions</a>
                     <a :href="`/clients/${client.id}/edit`" class="btn btn-success btn-sm">Edit</a>
                     <a @click="deleteClient(client.id)" class="btn btn-danger btn-sm">Delete</a>
 
@@ -34,7 +35,7 @@
 <script>
 export default {
     props: {
-        Clients: {
+        clients: {
             type: Object
         }
     },
@@ -46,11 +47,4 @@ export default {
     }
 }
 </script>
-<style>
-.avatar {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-</style>
+
